@@ -1,0 +1,7 @@
+<h2>Excluir Produto</h2>
+<p>Tem certeza que deseja excluir "{{ produto.nome }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sim, excluir</button>
+  <a href="{% url 'lista_produtos' %}">Cancelar</a>
+</form>

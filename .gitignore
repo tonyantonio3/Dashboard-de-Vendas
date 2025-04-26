@@ -1,0 +1,21 @@
+.vscode/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations
+**/migrations/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# dotenv
+*.env
