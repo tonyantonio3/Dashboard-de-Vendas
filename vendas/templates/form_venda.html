@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if venda %}Editar{% else %}Criar{% endif %} Venda</title>
+</head>
+<body>
+    <h1>{% if venda %}Editar{% else %}Criar{% endif %} Venda</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><strong>Total: </strong>{{ form.instance.total }}</p>
+        {% if form.quantidade.errors %}
+        <ul>
+            {% for error in form.quantidade.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <button type="submit">{% if venda %}Salvar Alterações{% else %}Criar Venda{% endif %}</button>
+    </form>
+</body>
+</html>

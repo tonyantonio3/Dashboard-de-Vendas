@@ -1,11 +1,38 @@
-<h2>Lista de Produtos</h2>
-<a href="{% url 'criar_produto' %}">Novo Produto</a>
-<ul>
-    {% for produto in produtos %}
-        <li>
-            {{ produto.nome }} - R$ {{ produto.preco }} - Estoque: {{ produto.estoque }}
-            [<a href="{% url 'editar_produto' produto.id %}">Editar</a>]
-            [<a href="{% url 'excluir_produto' produto.id">Excluir</a>]
-        </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <a href="{% url 'criar_produto' %}">Adicionar novo produto</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.categoria }}</td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.estoque }}</td>
+                <td>
+                    <a href="{% url 'editar_produto' produto.id %}">Editar</a> | 
+                    <a href="{% url 'excluir_produto' produto.id %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

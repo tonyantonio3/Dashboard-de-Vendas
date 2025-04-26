@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h2>Tem certeza que deseja excluir a venda de {{ venda.produto.nome }} para o cliente {{ venda.cliente.nome }}?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'lista_vendas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</body>

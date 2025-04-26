@@ -1,7 +1,16 @@
-<h2>{% if form.instance.pk %}Editar Produto{% else %}Novo Produto{% endif %}</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Salvar</button>
-</form>
-<a href="{% url 'lista_produtos' %}">Voltar</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if produto %}Editar{% else %}Criar{% endif %} Produto</title>
+</head>
+<body>
+    <h1>{% if produto %}Editar{% else %}Criar{% endif %} Produto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if produto %}Salvar Alterações{% else %}Criar Produto{% endif %}</button>
+    </form>
+</body>
+</html>

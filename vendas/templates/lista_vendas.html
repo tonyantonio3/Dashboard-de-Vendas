@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vendas</title>
+</head>
+<body>
+    <h1>Lista de Vendas</h1>
+    <a href="{% url 'criar_venda' %}">Adicionar nova venda</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venda in vendas %}
+                <tr>
+                    <td>{{ venda.produto.nome }}</td>
+                    <td>{{ venda.cliente.nome }}</td>
+                    <td>{{ venda.data }}</td>
+                    <td>{{ venda.quantidade }}</td>
+                    <td>{{ venda.total }}</td>
+                    <td>
+                        <a href="{% url 'editar_venda' id=venda.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'excluir_venda' id=venda.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
